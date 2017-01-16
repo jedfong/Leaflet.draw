@@ -105,9 +105,11 @@ L.Draw.Polyline = L.Draw.Feature.extend({
 				.on('mouseup', this._onMouseUp, this) // Necessary for 0.7 compatibility
 				.on('mousemove', this._onMouseMove, this)
 				.on('zoomlevelschange', this._onZoomEnd, this)
-				.on('touchstart', this._onTouch, this)
 				.on('zoomend', this._onZoomEnd, this);
 
+			if (L.Browser.touch) {
+				this._map.on('touchstart', this._onTouch, this);
+			}
 		}
 	},
 
